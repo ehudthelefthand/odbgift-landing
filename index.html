@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>China ODB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="/bower_components/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+      var images = [];
+      function preload() {
+        for (var i = 0; i < arguments.length; i++) {
+          images[i] = new Image();
+          images[i].src = arguments[i];
+        }
+      }
+      preload(
+        "/img/background/begin.jpg",
+        "/img/icon/logo.png",
+        "/img/icon/arrow.png"
+      );
+    </script>
+  </head>
+  <body>
+    <div id="audio-btn" class="off" style="display: block;">
+      <div id="play-status" class=""></div>
+      <audio id="media" src="/audio/background.mp3" loop autoplay preload></audio>
+    </div>
+    <img id="logo-begin" src="/img/icon/logo.png">
+    <img id="arrow" src="/img/icon/arrow.png">
+    <div id="cover"></div>
+    <div class="content">
+      <div id="mask">
+        <article id="odb-reading">
+          <header>日出</header>
+          <p>今天早晨，我看到了壮丽的日出美景，但却无暇欣赏，因为我的心思意念早就被其他的事务所占据。直到刚刚我想起了早晨的日出，才意识自己错过了一个适合赞美上帝的机会。</p>
+          <p>在我们忙忙碌碌和充满压力的生活中，其实环绕着许多美丽的事物。的确在人生当中，上帝的美善处处可见。这些美丽的事物让我们在浩瀚的宇宙间，瞥见天堂的荣美。唯愿我们能花时间停下脚步，欣赏美景，并思想上帝对我们的爱。</p>
+          <p>试想，如果摩西对那些“被火烧着，却没有烧毁”的荆棘（出埃及记3章2节）只是随意地看了一眼，那会如何呢？若他忽略此景而忙于其他事务，又会怎样？要知道，他除了看管羊群，还有很多其他的工作要做。若是如此，他可能就因此错过与永生上帝相遇、改变生命的那个重要时刻（4-12节）。</p>
+          <p>在生活中，有时我们必须加快脚步，但整体而言，应该少点仓促、多些关注。生命当珍惜此刻，当时时注意周遭，那么我们就能处处瞥见上帝的奇妙大爱。别再忙忙碌碌，当停下脚步，欣赏上帝的奇妙作为，如日出的美景；转向那些稍纵即逝，却能象征永恒天堂的事物。—罗大卫</p>
+          <p>
+            开我眼睛，使我看见，神的真理为我彰显，<br>
+            奇妙钥匙求主交我手，解我捆锁，使我自由。
+          </p>
+          <p>主，开启我们的眼，使我们看见。</p>
+          <p>
+            阅读：出埃及记3章1-12节、诗篇119篇18节<br>
+            “ 摩西说：‘我要过去看这大异象……。’”<br>
+            —出埃及记3章3节
+          </p>
+        </article>
+      </div>
+    </div>
+    <img id="logo-end" src="/img/icon/logo.png">
+    <div class="blurb">
+      <img id="white-book" src="/img/icon/white-book.png">
+      <div id="quote">
+        <h1>2016<br>白色日记<br></h1>
+        <hr>
+        <h2>为你的生命填满色彩，<br>别让生命留白。
+        </h2>
+      </div>
+    </div>
+    <a href="http://120.25.206.25/index.php/white-diary-2016.html">
+      <img id="white-button" src="/img/icon/white-button.png">
+    </a>
+
+
+    <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/jquery-backstretch/jquery.backstretch.min.js"></script>
+    <!-- // <script src="/bower_components/swiper/dist/js/swiper.min.js"></script> -->
+    <script src="/bower_components/tweenlite/TweenLite.min.js"></script>
+    <script src="/bower_components/tweenlite-css/CSSPlugin.min.js"></script>
+    <!-- // <script src="/js/raf.js"></script> -->
+    <script src="/js/scroll.js"></script>
+    <script>
+      var cover,
+        media = $("#media"),
+        play_status = $("#play-status"),
+        audio_btn = $("#audio-btn");
+
+      media.bind("canplay", function() {
+        media.get(0).play();
+      }).bind("play", function() {
+        audio_btn.addClass("playing").removeClass("off");
+        console.log(status);
+        play_status.addClass("rotate");
+      }).bind("pause", function() {
+        audio_btn.addClass("off").removeClass("playing");
+        play_status.removeClass("rotate");
+      });
+
+      audio_btn.click(function() {
+        $(this).hasClass("off") ? media.get(0).play() : media.get(0).pause();
+      });
+
+      $("#odb-reading").css("margin-top", innerHeight + "px");
+
+      $(".content").backstretch([
+        "/img/background/begin.jpg",
+        "/img/background/slide1.jpg",
+        "/img/background/slide2.jpg",
+        "/img/background/slide3.jpg",
+        "/img/background/slide4.jpg",
+        "/img/background/slide5.jpg",
+        "/img/background/slide6.jpg",
+        "/img/background/slide7.jpg",
+        "/img/background/end.jpg"
+      ], { duration: 6000, fade: 3000 });
+
+      $(".content").backstretch("pause");
+
+      $(".content").on("backstretch.after", function() {
+        TweenLite.to($("#logo-begin"), 1, { top: "50%", opacity: 1 });
+        $("#arrow").addClass("animate-arrow-loop");
+      });
+
+      (function() {
+        var
+          reference, delta, pressed = false,
+          cover = document.getElementById("cover"),
+          odb = document.getElementById("odb-reading"),
+          logo_begin = document.getElementById("logo-begin");
+
+        function unlock() {
+          cover.style.display = "none";
+          TweenLite.to(odb, 1, { marginTop: 0 });
+          logo_begin.parentNode.removeChild(logo_begin);
+          $(".content").backstretch("resume");
+        };
+
+        function ypos(e) {
+          if (e.targetTouches && (e.targetTouches.length >= 1)) {
+            return e.targetTouches[0].clientY;
+          }
+          return e.clientY;
+        }
+
+        function tap(e) {
+          pressed = true;
+          reference = ypos(e);
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        function drag(e) {
+          var y, delta;
+          if (pressed) {
+            y = ypos(e);
+            delta = reference - y;
+            if (delta > 30) {
+              unlock();
+            }
+          }
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        function release(e) {
+          pressed = false;
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        if (typeof window.ontouchstart !== 'undefined') {
+          cover.addEventListener("touchstart", tap);
+          cover.addEventListener("touchmove", drag);
+          cover.addEventListener("touchend", release);
+        }
+        cover.addEventListener("mousedown", tap);
+        cover.addEventListener("mousemove", drag);
+        cover.addEventListener("mouseup", release);
+      }());
+    </script>
+  </body>
+</html>
