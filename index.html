@@ -3,36 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>China ODB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link rel="stylesheet" href="/bower_components/swiper/dist/css/swiper.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script>
-      var images = [];
-      function preload() {
-        for (var i = 0; i < arguments.length; i++) {
-          images[i] = new Image();
-          images[i].src = arguments[i];
-        }
-      }
-      preload(
-        "/img/background/begin.jpg",
-        "/img/icon/logo.png",
-        "/img/icon/arrow.png"
-      );
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/raf.js"></script>
   </head>
   <body>
-    <div id="audio-btn" class="off" style="display: block;">
-      <div id="play-status" class=""></div>
-      <audio id="media" src="/audio/background.mp3" loop autoplay preload></audio>
+    <div class="audio off">
+      <div class="status"></div>
+      <audio class="media" src="/audio/background.mp3" loop autoplay preload></audio>
     </div>
-    <img id="logo-begin" src="/img/icon/logo.png">
-    <img id="arrow" src="/img/icon/arrow.png">
-    <div id="cover"></div>
-    <div class="content">
-      <div id="mask">
-        <article id="odb-reading">
+    <div class="viewport">
+      <img class="logo-begin" src="/img/icon/logo.png">
+      <img class="arrow" src="/img/icon/arrow.png">
+      <div class="mask">
+        <article class="paragraph">
           <header>日出</header>
           <p>今天早晨，我看到了壮丽的日出美景，但却无暇欣赏，因为我的心思意念早就被其他的事务所占据。直到刚刚我想起了早晨的日出，才意识自己错过了一个适合赞美上帝的机会。</p>
           <p>在我们忙忙碌碌和充满压力的生活中，其实环绕着许多美丽的事物。的确在人生当中，上帝的美善处处可见。这些美丽的事物让我们在浩瀚的宇宙间，瞥见天堂的荣美。唯愿我们能花时间停下脚步，欣赏美景，并思想上帝对我们的爱。</p>
@@ -50,129 +36,21 @@
           </p>
         </article>
       </div>
-    </div>
-    <img id="logo-end" src="/img/icon/logo.png">
-    <div class="blurb">
-      <img id="white-book" src="/img/icon/white-book.png">
-      <div id="quote">
-        <h1>2016<br>白色日记<br></h1>
-        <hr>
-        <h2>为你的生命填满色彩，<br>别让生命留白。
-        </h2>
+      <img class="logo-end" src="/img/icon/logo.png">
+      <div class="blurb">
+        <img class="white-book" src="/img/icon/white-book.png">
+        <div class="quote">
+          <h1>2016<br>白色日记<br></h1>
+          <hr>
+          <h2>为你的生命填满色彩，<br>别让生命留白。
+          </h2>
+        </div>
       </div>
     </div>
-    <a href="http://shop.odb-cn.org/">
-      <img id="white-button" src="/img/icon/white-button.png">
-    </a>
-
-    <script src="/bower_components/jquery/jquery.min.js"></script>
-    <script src="/bower_components/jquery-backstretch/jquery.backstretch.min.js"></script>
-    <!-- // <script src="/bower_components/swiper/dist/js/swiper.min.js"></script> -->
-    <script src="/bower_components/tweenlite/TweenLite.min.js"></script>
-    <script src="/bower_components/tweenlite-css/CSSPlugin.min.js"></script>
-    <!-- // <script src="/js/raf.js"></script> -->
-    <script src="/js/scroll.js"></script>
-    <script>
-      var cover,
-        media = $("#media"),
-        play_status = $("#play-status"),
-        audio_btn = $("#audio-btn");
-
-      media.bind("canplay", function() {
-        media.get(0).play();
-      }).bind("play", function() {
-        audio_btn.addClass("playing").removeClass("off");
-        console.log(status);
-        play_status.addClass("rotate");
-      }).bind("pause", function() {
-        audio_btn.addClass("off").removeClass("playing");
-        play_status.removeClass("rotate");
-      });
-
-      audio_btn.click(function() {
-        $(this).hasClass("off") ? media.get(0).play() : media.get(0).pause();
-      });
-
-      $("#odb-reading").css("margin-top", innerHeight + "px");
-
-      $(".content").backstretch([
-        "/img/background/begin.jpg",
-        "/img/background/slide1.jpg",
-        "/img/background/slide2.jpg",
-        "/img/background/slide3.jpg",
-        "/img/background/slide4.jpg",
-        "/img/background/slide5.jpg",
-        "/img/background/slide6.jpg",
-        "/img/background/slide7.jpg",
-        "/img/background/end.jpg"
-      ], { duration: 6000, fade: 3000 });
-
-      $(".content").backstretch("pause");
-
-      $(".content").on("backstretch.after", function() {
-        TweenLite.to($("#logo-begin"), 1, { top: "50%", opacity: 1 });
-        $("#arrow").addClass("animate-arrow-loop");
-      });
-
-      (function() {
-        var
-          reference, delta, pressed = false,
-          cover = document.getElementById("cover"),
-          odb = document.getElementById("odb-reading"),
-          logo_begin = document.getElementById("logo-begin");
-
-        function unlock() {
-          cover.style.display = "none";
-          TweenLite.to(odb, 1, { marginTop: 0 });
-          logo_begin.parentNode.removeChild(logo_begin);
-          $(".content").backstretch("resume");
-        };
-
-        function ypos(e) {
-          if (e.targetTouches && (e.targetTouches.length >= 1)) {
-            return e.targetTouches[0].clientY;
-          }
-          return e.clientY;
-        }
-
-        function tap(e) {
-          pressed = true;
-          reference = ypos(e);
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-
-        function drag(e) {
-          var y, delta;
-          if (pressed) {
-            y = ypos(e);
-            delta = reference - y;
-            if (delta > 30) {
-              unlock();
-            }
-          }
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-
-        function release(e) {
-          pressed = false;
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-
-        if (typeof window.ontouchstart !== 'undefined') {
-          cover.addEventListener("touchstart", tap);
-          cover.addEventListener("touchmove", drag);
-          cover.addEventListener("touchend", release);
-        }
-        cover.addEventListener("mousedown", tap);
-        cover.addEventListener("mousemove", drag);
-        cover.addEventListener("mouseup", release);
-      }());
-    </script>
+    <a class="white-button" href="http://shop.odb-cn.org/">品</a>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/backstretch.min.js"></script>
+    <script src="/js/paragraph.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
