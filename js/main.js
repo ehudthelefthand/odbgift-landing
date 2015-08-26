@@ -71,6 +71,8 @@ function initTouchHandler() {
 }
 
 function tap(event) {
+  removeStartPage();
+
   event.preventDefault();
   paragraph.isDragging = true;
   posStartY = paragraph.y;
@@ -113,10 +115,9 @@ function setPosition(event) {
   paragraph.dragY = posStartY + moveY;
 }
 
-
 function removeStartPage() {
-  if (paragraph.y < window.innerHeight/4 && !started) {
-    $(".logo-begin").animate({ opacity: 0}, 1000, function() {
+  if (!started) {
+    $(".logo-begin").animate({ opacity: 0}, 500, function() {
       $(".arrow").remove();
       $(".viewport").backstretch("resume");
     });
@@ -128,11 +129,11 @@ function beginEndPage() {
   if (!ended && paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
     $(".viewport").backstretch("show", 8);
     $(".viewport").backstretch("pause");
-    $(".paragraph").animate({ opacity: 0}, 500);
-    $(".logo-end").delay(2000).animate({ opacity: 1, top: "25%" }, 1000);
-    $(".white-book").delay(3000).animate({ opacity: 1, marginTop: "10px" }, 1000);
-    $(".quote").delay(4000).animate({ opacity: 1, marginTop: 0 }, 1000);
-    $(".white-button").delay(5000).animate({ opacity: 1, bottom: "10%" }, 1000);
+    $(".paragraph").delay(2000).animate({ opacity: 0}, 1000);
+    $(".logo-end").delay(3000).animate({ opacity: 1, top: "25%" }, 1000);
+    $(".white-book").delay(4000).animate({ opacity: 1, marginTop: "10px" }, 1000);
+    $(".quote").delay(5000).animate({ opacity: 1, marginTop: 0 }, 1000);
+    $(".white-button").delay(6000).animate({ opacity: 1, bottom: "10%" }, 1000);
     ended = true;
   }
 }
@@ -142,7 +143,6 @@ function animate() {
   paragraph.update();
   paragraph.checkEdges();
   paragraph.render();
-  removeStartPage();
   beginEndPage();
   requestAnimationFrame(animate);
 }
