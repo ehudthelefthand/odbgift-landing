@@ -129,7 +129,7 @@ function beginEndPage() {
   if (!ended && paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
     $(".viewport").backstretch("show", 8);
     $(".viewport").backstretch("pause");
-    $(".paragraph").delay(2000).animate({ opacity: 0}, 1000);
+    $(".paragraph").delay(1000).animate({ opacity: 0}, 1000);
     $(".logo-end").delay(3000).animate({ opacity: 1, top: "25%" }, 1000);
     $(".white-book").delay(4000).animate({ opacity: 1, marginTop: "10px" }, 1000);
     $(".quote").delay(5000).animate({ opacity: 1, marginTop: 0 }, 1000);
