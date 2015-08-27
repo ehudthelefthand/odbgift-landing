@@ -2,7 +2,7 @@ var Paragraph = function(elem) {
   this.elem = elem;
   this.mask = elem.parentNode;
   this.maskShadowSpread = this.mask.clientHeight * 0.17;
-  this.y = window.innerHeight;
+  this.y = window.innerHeight * 0.1;
   this.height = this.elem.clientHeight;
   this.acc = 0;
   this.vel = 0;
@@ -35,8 +35,8 @@ Paragraph.prototype.applyForce = function(f) {
 };
 
 Paragraph.prototype.checkEdges = function() {
-  if (this.y > window.innerHeight) {
-    this.y = window.innerHeight;
+  if (this.y > window.innerHeight * 0.1) {
+    this.y = window.innerHeight * 0.1;
   }
   else if (this.y < this.mask.clientHeight - this.height - this.maskShadowSpread) {
     this.y = this.mask.clientHeight - this.height - this.maskShadowSpread;

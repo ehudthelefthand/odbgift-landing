@@ -119,6 +119,7 @@ function removeStartPage() {
   if (!started) {
     $(".logo-begin").animate({ opacity: 0}, 500, function() {
       $(".arrow").remove();
+      $(".paragraph").animate({ opacity: 1}, 1000);
       $(".viewport").backstretch("resume");
     });
     started = true;
