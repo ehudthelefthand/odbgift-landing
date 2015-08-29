@@ -133,35 +133,38 @@ body {
 }
 .quote {
   position: absolute;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 125px;
-  opacity: 0;
   color: #fff;
+  opacity: 0;
 }
-.quote > h1 {
+.quote > p {
+  padding: 0;
+}
+.quote > p:first-child {
   font-size: 22px;
   line-height: 1.2em;
 }
-.quote > h2 {
+.quote > p:last-child {
   font-size: 12px;
   line-height: 1.5em;
 }
 .quote > hr {
   opacity: 0.4;
+  margin: -4px 0;
 }
 .white-button {
   position: absolute;
   right: 10%;
   bottom: 6%;
-  width: 50px;
-  height: 50px;
-  color: #fff;
-  font-size: 19px;
+  width: 80px;
+  height: 80px;
+  color: rgb(138,199,61);
+  font-size: 21px;
   font-weight: bold;
-  text-shadow: 1px 1px 1px #999;
   text-decoration: none;
   text-align: center;
-  line-height: 50px;
+  line-height: 80px;
   background: rgba(255,255,255,0.9);
   border-radius: 50%;
   box-shadow: 1px 1px 10px -4px #000, inset -5px -5px 15px -4px #999;
