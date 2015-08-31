@@ -132,9 +132,10 @@ function beginEndPage() {
     $(".viewport").backstretch("pause");
     $(".paragraph").delay(1000).animate({ opacity: 0}, 1000);
     $(".logo-end").delay(3000).animate({ opacity: 1, top: "25%" }, 1000);
-    $(".white-book").delay(4000).animate({ opacity: 1, marginTop: "10px" }, 1000);
-    $(".quote").delay(5000).animate({ opacity: 1, marginTop: "-10px" }, 1000);
-    $(".white-button").delay(6000).animate({ opacity: 1, bottom: "10%" }, 1000);
+    $(".slogan").delay(4000).animate({ opacity: 1, top: "3%" }, 1000);
+    $(".white-book").delay(5000).animate({ opacity: 1, marginTop: "10px" }, 1000);
+    $(".quote").delay(6000).animate({ opacity: 1, marginTop: "-10px" }, 1000);
+    $(".white-button").delay(7000).animate({ opacity: 1, bottom: "10%" }, 1000);
     ended = true;
   }
 }

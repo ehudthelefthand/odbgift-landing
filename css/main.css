@@ -153,6 +153,13 @@ body {
   opacity: 0.4;
   margin: -4px 0;
 }
+.slogan {
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 20px;
+  opacity: 0;
+}
 .white-button {
   position: absolute;
   right: 10%;
