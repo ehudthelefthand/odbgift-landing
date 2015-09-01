@@ -147,7 +147,7 @@ function beginEndPage() {
     $(".white-book").delay(5000).animate({ opacity: 1, marginTop: "10px" }, 1000);
     $(".quote").delay(6000).animate({ opacity: 1, marginTop: "-10px" }, 1000);
     $(".white-button").delay(7000).animate({ opacity: 1, bottom: "7%" }, 1000);
-    $(".white-button > a").addClass("grow");
+    $(".white-button > a").addClass("white-button-grow");
     ended = true;
   }
 }
