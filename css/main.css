@@ -187,19 +187,22 @@ body {
 .white-button {
   position: absolute;
   right: 10%;
-  bottom: 6%;
+  bottom: 5%;
   width: 80px;
   height: 80px;
-  color: rgb(138,199,61);
-  font-size: 19px;
-  font-weight: normal;
-  text-decoration: none;
   text-align: center;
   line-height: 80px;
   background: rgba(255,255,255,0.9);
   border-radius: 50%;
   box-shadow: 1px 1px 10px -4px #000, inset -5px -5px 15px -4px #999;
   opacity: 0;
+}
+.white-button > a {
+  color: rgb(138,199,61);
+  font-size: 21px;
+  font-weight: bold;
+  text-decoration: none;
+
 }
 @-webkit-keyframes start {
   0%,30% {
