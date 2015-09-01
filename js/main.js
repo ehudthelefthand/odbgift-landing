@@ -34,13 +34,13 @@ function initAudio() {
   media.bind("canplay", function() {
     media.get(0).play();
   }).bind("play", function() {
-    music_botton.addClass("rotate2");
+    music_botton.addClass("grow");
   }).bind("pause", function() {
-    music_botton.removeClass("rotate2");
+    music_botton.removeClass("grow");
   });
 
   music_botton.click(function() {
-    $(this).hasClass("rotate2") ? media.get(0).pause() : media.get(0).play();
+    $(this).hasClass("grow") ? media.get(0).pause() : media.get(0).play();
   });
 }
 

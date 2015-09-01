@@ -17,15 +17,16 @@ body {
   position: absolute;
   top: 3%;
   right: 5%;
-  padding: 6px;
+  padding: 8px;
   z-index: 20;
   width: 32px;
   height: 32px;
   font-size: 1.5em !important;
   text-align: center;
-  border: 2px solid #fff;
+  /*border: 2px solid #fff;*/
   border-radius: 50%;
   background: rgba(0,0,0,0.6);
+  box-shadow: inset 0 0 10px 1px #000;
 }
 .rotate2 {
   -webkit-animation: rotating 1.2s linear infinite;
@@ -133,10 +134,10 @@ body {
   opacity: 0;
 }
 .arrow-loop {
-  -webkit-animation: start 1.5s infinite ease-in-out 1s;
-  -moz-animation: start 1.5s infinite ease-in-out 1s;
-  -o-animation: start 1.5s infinite ease-in-out 1s;
-  animation: start 1.5s infinite ease-in-out 1s;
+  -webkit-animation: start 1.5s ease-in-out 1s infinite;
+  -moz-animation: start 1.5s ease-in-out 1s infinite;
+  -o-animation: start 1.5s ease-in-out 1s infinite;
+  animation: start 1.5s ease-in-out 1s infinite;
 }
 .blurb {
   position: absolute;
@@ -196,6 +197,13 @@ body {
   border-radius: 50%;
   box-shadow: 1px 1px 10px -4px #000, inset -5px -5px 15px -4px #999;
   opacity: 0;
+}
+.grow {
+  background: rgba(0,0,0,0.4);
+  -webkit-animation: grow 2s ease-in-out 0s infinite;
+  -moz-animation: grow 2s ease-in-out 0s infinite;
+  -o-animation: grow 2s ease-in-out 0s infinite;
+  animation: grow 2s ease-in-out 0s infinite;
 }
 @-webkit-keyframes start {
   0%,30% {
@@ -283,5 +291,49 @@ body {
     }
     to {
         transform: rotate(360deg)
+    }
+}
+@-webkit-keyframes grow {
+    0% {
+        -webkit-transform: scale(1)
+    }
+    50% {
+        -webkit-transform: scale(1.1)
+    }
+    100% {
+        -webkit-transform: scale(1)
+    }
+}
+@-moz-keyframes grow {
+    0% {
+        -moz-transform: scale(1)
+    }
+    50% {
+        -moz-transform: scale(1.1)
+    }
+    100% {
+      -moz-transform: scale(1)
+    }
+}
+@-o-keyframes grow {
+    0% {
+        -o-transform: scale(1)
+    }
+    50% {
+        -o-transform: scale(1.1)
+    }
+    100% {
+      -o-transform: scale(1)
+    }
+}
+@keyframes grow {
+    0%, 30% {
+        transform: scale(1)
+    }
+    60% {
+        transform: scale(1.1)
+    }
+    100% {
+      transform: scale(1)
     }
 }
