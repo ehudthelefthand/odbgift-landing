@@ -29,21 +29,18 @@ function initBackstrectch() {
 
 function initAudio() {
   var media = $(".media"),
-    play_status = $(".status"),
-    audio_btn = $(".audio");
+    music_botton = $(".music-button");
 
   media.bind("canplay", function() {
     media.get(0).play();
   }).bind("play", function() {
-    audio_btn.addClass("playing").removeClass("off");
-    play_status.addClass("rotate");
+    music_botton.addClass("rotate2");
   }).bind("pause", function() {
-    audio_btn.addClass("off").removeClass("playing");
-    play_status.removeClass("rotate");
+    music_botton.removeClass("rotate2");
   });
 
-  audio_btn.click(function() {
-    $(this).hasClass("off") ? media.get(0).play() : media.get(0).pause();
+  music_botton.click(function() {
+    $(this).hasClass("rotate2") ? media.get(0).pause() : media.get(0).play();
   });
 }
 
