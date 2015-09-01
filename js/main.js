@@ -112,13 +112,17 @@ function setPosition(event) {
   else {
     moveY = event.pageY - touchStartY;
   }
+  console.log(moveY);
   paragraph.dragY = posStartY + moveY;
+  if ($(".arrow").css("display") === "block" && moveY < -50) {
+    beginEndPage();
+  }
 }
 
 function removeStartPage() {
   if (!started) {
     $(".logo-begin").animate({ opacity: 0}, 500, function() {
-      $(".arrow").remove();
+      $(".arrow").hide();
       $(".paragraph").animate({ opacity: 1}, 1000);
       $(".viewport").backstretch("resume");
     });
@@ -126,8 +130,18 @@ function removeStartPage() {
   }
 }
 
+function checkEndStory() {
+  if (!started || paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
+    $(".arrow").show();
+  }
+  else {
+    $(".arrow").hide();
+  }
+}
+
 function beginEndPage() {
-  if (!ended && paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
+  if (!ended) {
+    $(".arrow").remove();
     $(".viewport").backstretch("show", 8);
     $(".viewport").backstretch("pause");
     $(".paragraph").delay(1000).animate({ opacity: 0}, 1000);
@@ -145,6 +159,6 @@ function animate() {
   paragraph.update();
   paragraph.checkEdges();
   paragraph.render();
-  beginEndPage();
+  checkEndStory();
   requestAnimationFrame(animate);
 }
