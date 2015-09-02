@@ -130,11 +130,8 @@ body {
 .arrow {
   position: relative;
   top: 85%;
-  display: block;
-  margin: 0 auto;
-  width: 24px;
-  height: 14px;
-  opacity: 0;
+  display: none;
+  text-align: center;
 }
 .arrow-loop {
   -webkit-animation: start 1.5s ease-in-out 1s infinite;

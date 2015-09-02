@@ -47,9 +47,9 @@ function initAudio() {
 function animateStartPage() {
   setTimeout(function() {
     $(".logo-begin").animate({ opacity: 1, top: "50%" }, 1000, function() {
+      $(".arrow").fadeIn("slow");
       initTouchHandler();
     });
-    $(".arrow").addClass("arrow-loop");
   }, 3000);
 }
 
@@ -109,9 +109,9 @@ function setPosition(event) {
   else {
     moveY = event.pageY - touchStartY;
   }
-  console.log(moveY);
+
   paragraph.dragY = posStartY + moveY;
-  if ($(".arrow").css("display") === "block" && moveY < -50) {
+  if ($(".paragraph").css("opacity") === "1" && $(".arrow").css("display") === "block" && moveY < -200) {
     beginEndPage();
   }
 }
@@ -119,7 +119,7 @@ function setPosition(event) {
 function removeStartPage() {
   if (!started) {
     $(".logo-begin").animate({ opacity: 0}, 500, function() {
-      $(".arrow").hide();
+      $(".arrow").fadeOut("slow");
       $(".paragraph").animate({ opacity: 1}, 1000);
       $(".viewport").backstretch("resume");
     });
@@ -127,12 +127,14 @@ function removeStartPage() {
   }
 }
 
-function checkEndStory() {
-  if (!started || paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
-    $(".arrow").show();
-  }
-  else {
-    $(".arrow").hide();
+function keepTrackOfArrow() {
+  if (started) {
+    if (paragraph.y === (paragraph.mask.clientHeight - paragraph.height - paragraph.maskShadowSpread)) {
+      $(".arrow").fadeIn("slow");
+    }
+    else {
+      $(".arrow").fadeOut("slow");
+    }
   }
 }
 
@@ -157,6 +159,6 @@ function animate() {
   paragraph.update();
   paragraph.checkEdges();
   paragraph.render();
-  checkEndStory();
+  keepTrackOfArrow();
   requestAnimationFrame(animate);
 }
