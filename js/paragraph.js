@@ -12,12 +12,12 @@ var Paragraph = function(elem) {
   paragraph = this;
   var xform = 'transform';
   ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
-      var e = prefix + 'Transform';
-      if (typeof elem.style[e] !== 'undefined') {
-          paragraph.xform = e;
-          return false;
-      }
-      return true;
+    var e = prefix + 'Transform';
+    if (typeof elem.style[e] !== 'undefined') {
+        paragraph.xform = e;
+        return false;
+    }
+    return true;
   });
 };
 
