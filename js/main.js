@@ -28,20 +28,32 @@ function initBackstrectch() {
 }
 
 function initAudio() {
-  var media = $(".media"),
-    music_botton = $(".music-button");
+  try {
+    var context = getAudioContext();
+    var xhr = XHRGetBuffer;
+    var bufferLoader = new BufferLoader(context, xhr);
+    bufferLoader.load('audio/background.mp3', function(url) {
+      var buffer = bufferLoader.caches[url];
+      var sound = new Sound(context, buffer);
+      sound.play();
 
-  media.bind("canplay", function() {
-    media.get(0).play();
-  }).bind("play", function() {
-    music_botton.addClass("grow");
-  }).bind("pause", function() {
-    music_botton.removeClass("grow");
-  });
-
-  music_botton.click(function() {
-    $(this).hasClass("grow") ? media.get(0).pause() : media.get(0).play();
-  });
+      var btnMusic = $(".music-button");
+      btnMusic.addClass("grow");
+      btnMusic.click(function() {
+        if (sound.playing) {
+          sound.pause();
+          btnMusic.removeClass("grow");
+        }
+        else {
+          sound.play();
+          btnMusic.addClass("grow");
+        }
+      });
+    });
+  } catch (e) {
+    $(".music-button").css("display", "none");
+    console.log(e.message);
+  }
 }
 
 function animateStartPage() {
