@@ -13,15 +13,15 @@ window.addEventListener("DOMContentLoaded", function() {
 
 function initBackstrectch() {
   $(".viewport").backstretch([
-    "/img/background/begin.jpg",
-    "/img/background/slide1.jpg",
-    "/img/background/slide2.jpg",
-    "/img/background/slide3.jpg",
-    "/img/background/slide4.jpg",
-    "/img/background/slide5.jpg",
-    "/img/background/slide6.jpg",
-    "/img/background/slide7.jpg",
-    "/img/background/end.jpg"
+    "img/background/begin.jpg",
+    "img/background/slide1.jpg",
+    "img/background/slide2.jpg",
+    "img/background/slide3.jpg",
+    "img/background/slide4.jpg",
+    "img/background/slide5.jpg",
+    "img/background/slide6.jpg",
+    "img/background/slide7.jpg",
+    "img/background/end.jpg"
   ], { duration: 6000, fade: 3000 });
 
   $(".viewport").backstretch("pause");

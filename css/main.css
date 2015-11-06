@@ -85,7 +85,7 @@ body {
   height: 70%;
   z-index: 10;
   overflow: hidden;
-  -webkit-mask: url(/img/mask.png);
+  -webkit-mask: url(../img/mask.png);
   -webkit-mask-size: contain;
 }
 .paragraph {
